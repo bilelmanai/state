@@ -7,7 +7,9 @@ const App = () => {
   return (
     <div>
       {count === true ? <Profile /> : " "}
-      <button onClick={() => setCount(!count)}>Click me</button>
+      <button onClick={() => setCount(!count)}>
+        {count === true ? "clicked" : "off"}
+      </button>
     </div>
   );
 };
