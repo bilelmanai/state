@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      person: {
+        fullName: "Charles Herrera",
+        bio: [
+          "Gender: female",
+          "Title: Mrs",
+          "Race: White",
+          "Birthday: 11/5/1992",
+          "SocialSecurityNumber: 395-03-9081",
+        ],
+        imgSrc: "https://picsum.photos/200/300",
+        profession: "College Professor.",
+      },
+      shows: false,
+      show: "hidden",
+      count: 0,
+    };
+  }
+  componentDidMount() {
+    setInterval(this.countt, 1000);
+  }
+  countt() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  appear() {
+    this.setState({
+      shows: !this.state.shows,
+    });
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        {this.state.shows === true ? (
+          <div className="pff">
+            <div>My name is {this.state.person.fullName}</div>
+            <div>
+              {this.state.person.bio.map((x, i) => (
+                <div key={i}>{x}</div>
+              ))}
+            </div>
+            <img src={this.state.person.imgSrc} alt="ops" />
+            <div>Profession: {this.state.person.profession}</div>
+            <div>{this.state.count}</div>
+          </div>
+        ) : (
+          " "
+        )}
+        <div>
+          <button onClick={() => this.appear()}>
+            {this.state.shows === true ? "hide" : "show"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
