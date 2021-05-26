@@ -46,12 +46,12 @@ class Profile extends Component {
             </div>
             <img src={this.state.person.imgSrc} alt="ops" />
             <div>Profession: {this.state.person.profession}</div>
-            <div>{this.state.count}</div>
           </div>
         ) : (
           " "
         )}
         <div>
+          <div>{this.state.count}</div>
           <button onClick={() => this.appear()}>
             {this.state.shows === true ? "hide" : "show"}
           </button>
